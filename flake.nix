@@ -1,8 +1,11 @@
 {
   description = "Xnode OS";
   inputs = {
-    nixpkgs.url = "github:openmesh-network/xnodepkgs/dev";
-    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixpkgs.url = "github:Openmesh-Network/Xnodepkgs/dev";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs:
     let
