@@ -38,11 +38,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1720349829,
-        "narHash": "sha256-kWN8s1Osk5EC1HpFulJZDCYxZC+cXjbbSwViuIEjb8o=",
+        "lastModified": 1720489283,
+        "narHash": "sha256-2RIrXjRbyjlZqUGQUCztiHMbl4YZ4v2crxH2JC5JHbI=",
         "owner": "Openmesh-Network",
         "repo": "Xnodepkgs",
-        "rev": "35f8ebcd610b6cc3003701768aa393624be69a20",
+        "rev": "0514e8c0b2d97249587248c4b0a0eeb8c3aee840",
         "type": "github"
       },
       "original": {
