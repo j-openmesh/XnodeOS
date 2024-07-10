@@ -7,6 +7,7 @@ inputs.nixos-generators.nixosGenerate {
   customFormats = { "kexec-nixos" = import ./custom-formats/kexec.nix; };
   format = "kexec-nixos";
   modules = [
+    ({ ... }: { nix.registry.nixpkgs.flake = inputs.nixpkgs; })
     kexec
   ];
 }

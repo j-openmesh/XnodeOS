@@ -1,7 +1,4 @@
 { config, lib, pkgs, ... }: {
-    imports = [
-      ../repo/modules/services/openmesh/xnode/admin.nix
-    ];
     config = {
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
       nix.settings.trusted-users = [ "root" "xnode" "openmesh-xnode-admin" ];

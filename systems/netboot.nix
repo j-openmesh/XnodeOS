@@ -10,6 +10,7 @@ inputs.nixos-generators.nixosGenerate {
   customFormats = { "netboot" = import ./custom-formats/netboot.nix; };
   format = "netboot";
   modules = [
+    ({ ... }: { nix.registry.nixpkgs.flake = inputs.nixpkgs; })
     netboot
   ];
 }
