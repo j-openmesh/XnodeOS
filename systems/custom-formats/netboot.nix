@@ -49,5 +49,11 @@
 
   };
 
+  boot.kernelParams = [
+    "console=ttyS0,115200" # allows certain forms of remote access, if the hardware is setup right
+    "panic=30"
+    "boot.panic_on_fail" # reboot the machine upon fatal boot issues
+  ];
+
   formatAttr = "image";
 }

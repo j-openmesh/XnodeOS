@@ -1,7 +1,7 @@
 { inputs, ... }@flakeContext:
 let
   config.netboot = {
-    squashfsCompression = "gzip -Xcompression-level 1";
+    squashfsCompression = "zstd -Xcompression-level 15";
   };
   netboot = import ./xnode-common.nix;
 in

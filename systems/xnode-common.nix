@@ -1,34 +1,41 @@
 { config, lib, pkgs, ... }: {
     config = {
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
-      nix.settings.trusted-users = [ "root" "xnode" "openmesh-xnode-admin" ];
-      documentation = {
-        nixos = {
-          enable = false;
-        };
-        doc = {
-          enable = false;
-        };
+      nix.settings.trusted-users = [ "@wheel" ];
+      nix.settings.auto-optimise-store = true;
+      nix.gc.automatic = true;
+      nix.gc.dates = "hourly";
+      nix.gc.randomizedDelaySec = "15min";
+      nix.gc.options = "--delete-old +1 --delete-older-than 1d";
+
+      system.defaultChannel = "https://github.com/Openmesh-Network/Xnodepkgs/archive/dev.tar.gz";
+      system.stateVersion = "24.11";
+
+      documentation.nixos.enable = false;
+      documentation.doc.enable = false;
+
+      services.openmesh.xnode.admin.enable = true;
+      services.openmesh.xnode.admin.remoteDir = "https://dpl-staging.openmesh.network/xnodes/functions";
+
+      services.openssh.enable = lib.mkForce false;
+
+      users.motd = null;
+      users.users.xnode = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
       };
-      services = {
-        openmesh = {
-          xnode = {
-            admin = {
-              enable = true;
-              remoteDir = "https://dpl-staging.openmesh.network/xnodes/functions";
-            };
-          };
-        };
-        getty = {
-          autologinUser = lib.mkForce "xnode";
-          greetingLine = ''<<< Welcome to Openmesh XnodeOS ${config.system.nixos.label} (\m) - \l >>>'';
-        };
+      security.sudo.wheelNeedsPassword = false;
+
+      services.getty = {
+        autologinUser = lib.mkForce "xnode";
+        helpLine = lib.mkForce ''\n'';
+        greetingLine = ''<<< Welcome to Openmesh XnodeOS ${config.system.nixos.label} (\m) - \l >>>'';
       };
-      environment = {
-        systemPackages = with pkgs; [
-          nyancat
-        ];
+
+      networking = {
+        hostName = "xnode";
       };
+
       boot = {
         postBootCommands = ''
                             cat > /etc/nixos/configuration.nix <<ENDFILE
@@ -36,19 +43,41 @@
                               imports=[./hardware-configuration.nix] ++ lib.optional (builtins.pathExists /var/lib/openmesh-xnode-admin/config.nix) /var/lib/openmesh-xnode-admin/config.nix ++ lib.optional (builtins.pathExists /var/lib/openmesh-xnode-admin/xnodeos) /var/lib/openmesh-xnode-admin/xnodeos/repo/modules/services/openmesh/xnode/admin.nix ;
                               config = {
                                 nix.settings.experimental-features = [ "nix-command" "flakes" ];
-                                nix.settings.trusted-users = [ "root" "xnode" "openmesh-xnode-admin" ];
+                                nix.settings.trusted-users = [ "@wheel" ];
+                                nix.settings.auto-optimise-store = true;
+                                nix.gc.automatic = true;
+                                nix.gc.dates = "hourly";
+                                nix.gc.randomizedDelaySec = "15min";
+                                nix.gc.options = "--delete-old +1 --delete-older-than 1d";
+
+                                system.defaultChannel = "https://github.com/Openmesh-Network/Xnodepkgs/archive/dev.tar.gz";
+                                system.stateVersion = "24.11";
+
+                                services.openmesh.xnode.admin.enable = true;
+                                services.openmesh.xnode.admin.remoteDir = "https://dpl-staging.openmesh.network/xnodes/functions";
+
+                                services.openssh.enable = false;
+
+                                documentation.nixos.enable = false;
+                                documentation.doc.enable = false;
+
                                 boot.loader.grub.enable=false;
-                                nixpkgs.config.allowUnfree = true;
-                                services.openmesh.xnode.admin = {
-                                  enable = true;
-                                  remoteDir = "https://dpl-staging.openmesh.network/xnodes/functions";
+
+                                users.motd = null;
+                                users.users.xnode = {
+                                  isNormalUser = true;
+                                  extraGroups = [ "wheel" ];
                                 };
-                                users.users = {
-                                  "xnode" = {
-                                    isNormalUser = true;
-                                    password = "xnode";
-                                    extraGroups = [ "wheel" ];
-                                  };
+                                security.sudo.wheelNeedsPassword = false;
+
+                                services.getty = {
+                                  autologinUser = lib.mkForce "xnode";
+                                  helpLine = lib.mkForce ''\'''\'\n''\'''\';
+                                  greetingLine = ''\'''\'<<< Welcome to Openmesh XnodeOS ${config.system.nixos.label} (\m) - \l >>>''\'''\';
+                                };
+
+                                networking = {
+                                  hostName = "xnode";
                                 };
                               };
                             }
@@ -68,18 +97,6 @@
                             }
                             ENDFILE
                           '';
-      };
-      networking = {
-        hostName = "xnode";
-      };
-      users = {
-        users = {
-          xnode = {
-            isNormalUser = true;
-            password = "xnode";
-            extraGroups = [ "wheel" ];
-          };
-        };
       };
     };
   }
