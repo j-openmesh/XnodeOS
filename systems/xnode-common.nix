@@ -50,6 +50,8 @@
                                 nix.gc.randomizedDelaySec = "15min";
                                 nix.gc.options = "--delete-old +1 --delete-older-than 1d";
 
+                                nixpkgs.config.allowUnfree = true;
+
                                 system.defaultChannel = "https://github.com/Openmesh-Network/Xnodepkgs/archive/dev.tar.gz";
                                 system.stateVersion = "24.11";
 
