@@ -17,7 +17,7 @@
       services.openmesh.xnode.admin.enable = true;
       services.openmesh.xnode.admin.remoteDir = "https://dpl-staging.openmesh.network/xnodes/functions";
 
-      services.openssh.enable = lib.mkDefault false;
+      services.openssh.enable = lib.mkForce false;
 
       users.motd = null;
       users.users.xnode = {
@@ -58,7 +58,7 @@
                                 services.openmesh.xnode.admin.enable = true;
                                 services.openmesh.xnode.admin.remoteDir = "https://dpl-staging.openmesh.network/xnodes/functions";
 
-                                services.openssh.enable = lib.mkDefault false;
+                                services.openssh.enable = lib.mkForce false;
 
                                 documentation.nixos.enable = false;
                                 documentation.doc.enable = false;
