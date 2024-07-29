@@ -17,7 +17,7 @@
       services.openmesh.xnode.admin.enable = true;
       services.openmesh.xnode.admin.remoteDir = "https://dpl-staging.openmesh.network/xnodes/functions";
 
-      services.openssh.enable = lib.mkForce false;
+      services.openssh.enable = lib.mkDefault false;
 
       users.motd = null;
       users.users.xnode = {
@@ -50,13 +50,15 @@
                                 nix.gc.randomizedDelaySec = "15min";
                                 nix.gc.options = "--delete-old +1 --delete-older-than 1d";
 
+                                nixpkgs.config.allowUnfree = true;
+
                                 system.defaultChannel = "https://github.com/Openmesh-Network/Xnodepkgs/archive/dev.tar.gz";
                                 system.stateVersion = "24.11";
 
                                 services.openmesh.xnode.admin.enable = true;
                                 services.openmesh.xnode.admin.remoteDir = "https://dpl-staging.openmesh.network/xnodes/functions";
 
-                                services.openssh.enable = false;
+                                services.openssh.enable = lib.mkDefault false;
 
                                 documentation.nixos.enable = false;
                                 documentation.doc.enable = false;
