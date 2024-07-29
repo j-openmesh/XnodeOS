@@ -18,7 +18,7 @@
     xnode_version = "0";
     xnode_uuid = "I5KMFECV11H-VX5K78G4P7I";
     xnode_access_token = "Tah6WlMnal0mpka6ki8jHmoD9hhK9KXc81xyNjvSt1hm1nj74dlM4W8jPEdPdmSJD1JVba+eDHEceUysRZnplw==";
-    
+
     ipxe_test_entrypoint_script = pkgs.writeTextFile {
       executable = false;
       name = "ipxe_test_entrypoint";
