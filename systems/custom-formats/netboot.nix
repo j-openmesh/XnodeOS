@@ -31,7 +31,6 @@
         set kernel_url http://127.0.0.1:8000/kernel
         set initrd_url http://127.0.0.1:8000/initrd
         chain http://127.0.0.1:8000/ipxe
-        boot
       '';
     };
 
