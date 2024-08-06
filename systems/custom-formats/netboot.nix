@@ -28,6 +28,8 @@
         set xnode_version 0
         set xnode_uuid ${xnode_uuid}
         set xnode_access_token ${xnode_access_token}
+        set kernel_url http://127.0.0.1:8000/kernel
+        set initrd_url http://127.0.0.1:8000/initrd
         chain http://127.0.0.1:8000/ipxe
       '';
     };
@@ -41,8 +43,8 @@
         #   - xnode_version
         #   - xnode_uuid
         #   - xnode_access_token
-        kernel http://127.0.0.1:8000/kernel initrd=initrd init=${builtins.unsafeDiscardStringContext config.system.build.toplevel}/init ${toString config.boot.kernelParams} -- XNODE_VERSION=''${xnode_version} XNODE_UUID=''${xnode_uuid} XNODE_ACCESS_TOKEN=''${xnode_access_token} AVOID_NEWLINE=1
-        initrd http://127.0.0.1:8000/initrd
+        kernel ''${kernel_url} initrd=initrd init=${builtins.unsafeDiscardStringContext config.system.build.toplevel}/init ${toString config.boot.kernelParams} -- XNODE_VERSION=''${xnode_version} XNODE_UUID=''${xnode_uuid} XNODE_ACCESS_TOKEN=''${xnode_access_token} AVOID_NEWLINE=1
+        initrd ''${initrd_url}
         boot
       '';
     };
