@@ -33,7 +33,7 @@
       };
 
       networking = {
-        hostName = "xnode";
+        hostName = lib.mkDefault "xnode";
       };
 
       boot = {
@@ -81,6 +81,11 @@
                                 networking = {
                                   hostName = "xnode";
                                 };
+                            ENDFILE
+
+                            echo "''$(cat /proc/cmdline | ${pkgs.gnugrep}/bin/grep -oE 'XNODE_CONFIG_EXTRA=([a-zA-Z0-9+=/]*)' | cut -d= -f2- | base64 -d)" >> /etc/nixos/configuration.nix
+
+                            cat >> /etc/nixos/configuration.nix <<ENDFILE
                               };
                             }
                             ENDFILE
@@ -93,9 +98,12 @@
                                   fsType = "tmpfs";
                                 };
                               };
-
-                              networking.useDHCP = lib.mkForce true;
                               nixpkgs.hostPlatform=lib.mkDefault "x86_64-linux";
+                            ENDFILE
+
+                            echo "''$(cat /proc/cmdline | ${pkgs.gnugrep}/bin/grep -oE 'XNODE_HARDWARE_CONFIG_EXTRA=([a-zA-Z0-9+=/]*)' | cut -d= -f2- | base64 -d)" >> /etc/nixos/hardware-configuration.nix
+
+                            cat >> /etc/nixos/hardware-configuration.nix <<ENDFILE
                             }
                             ENDFILE
                           '';
