@@ -52,7 +52,6 @@ in {
     "panic=30"
     "boot.panic_on_fail" # reboot the machine upon fatal boot issues
   ];
-  networking.hostName = lib.mkDefault "kexec";
 
   formatAttr = "kexec_tarball";
   fileExtension = ".tar.xz";
