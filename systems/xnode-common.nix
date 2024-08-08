@@ -3,10 +3,6 @@
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
       nix.settings.trusted-users = [ "@wheel" ];
       nix.settings.auto-optimise-store = true;
-      nix.gc.automatic = true;
-      nix.gc.dates = "hourly";
-      nix.gc.randomizedDelaySec = "15min";
-      nix.gc.options = "--delete-old +1 --delete-older-than 1d";
 
       system.defaultChannel = "https://github.com/Openmesh-Network/Xnodepkgs/archive/dev.tar.gz";
       system.stateVersion = "24.11";
