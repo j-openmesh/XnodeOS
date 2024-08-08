@@ -19,7 +19,7 @@
     xnode_version = "0";
     xnode_uuid = "AKD758Z8RB-QIW5D9STYK";
     xnode_access_token = "3YT6cBGkYE+QMk+3sONySrnC4q/1A13cEtZHk2oHE1u+9/ef84modZWQjPqxUdbU2xy+TGxKOAMYkjDLPXNkeA==";
-    xnode_config_remote = "https://dpl-backend-staging.up.railway.app/xnodes/functions/";
+    xnode_config_remote = "https://dpl-backend-staging.up.railway.app/xnodes/functions";
 
     ipxe_test_entrypoint_script = pkgs.writeTextFile {
       executable = false;
