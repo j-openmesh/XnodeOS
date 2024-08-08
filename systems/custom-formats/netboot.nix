@@ -52,7 +52,7 @@
         set xnode_integration_version 0
 
         # example base64'd "# Empty Hardware Integration Script" w/o newline
-        set xnode_hardware_config_extra yBFbXB0eSBIYXJkd2FyZSBJbnRlZ3JhdGlvbiBTY3JpcHQ=
+        isset ''${xnode_hardware_config_extra} || set xnode_hardware_config_extra IyBGcm9tIFhOT0RFX0hBUkRXQVJFX0NPTkZJR19FWFRSQSAtIHRoaXMgaXMgYW4gZW1wdHkgZGVmYXVsdCBjb21tZW50Cg==
 
         isset ''${integration_chain_url} && chain ''${integration_chain_url} ||
         chain ''${os_loader_chain_url}
