@@ -13,6 +13,8 @@
       services.openmesh.xnode.admin.enable = true;
       services.openmesh.xnode.admin.remoteDir = "https://dpl-staging.openmesh.network/xnodes/functions";
 
+      services.openmesh.xnode.personaliser.enable = true;
+
       services.openssh.enable = lib.mkForce false;
 
       users.motd = null;

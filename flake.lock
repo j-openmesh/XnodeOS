@@ -38,16 +38,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1721445463,
-        "narHash": "sha256-Y7Mavl5+wM/mi8niGGpbtL413Kja/FXj95Lt2n3i3QQ=",
-        "owner": "Openmesh-Network",
+        "lastModified": 1723168304,
+        "narHash": "sha256-HJbrug2yw/k8rEILdJExsoBfS761rKpbISxuutmQ09s=",
+        "owner": "j-openmesh",
         "repo": "Xnodepkgs",
-        "rev": "ca79c6546f3feb935e5b50f444e97137964b33d3",
+        "rev": "d0cf8c71addb394bec8afb3731cad930be99c918",
         "type": "github"
       },
       "original": {
-        "owner": "Openmesh-Network",
-        "ref": "dev",
+        "owner": "j-openmesh",
+        "ref": "feature/xnode-personaliser",
         "repo": "Xnodepkgs",
         "type": "github"
       }
